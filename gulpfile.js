@@ -44,7 +44,8 @@ var paths = {
     dest: './dist/css/'
   },
   bsCss: {
-    src: './node_modules/bootstrap/dist/css/bootstrap.min.*',
+    //src: './node_modules/bootstrap/dist/css/bootstrap.min.*',
+    src: './node_modules/bootstrap/scss/bootstrap-grid.scss',
     dest: './dist/css/'
   },
   bsJs: {
@@ -142,6 +143,10 @@ function normalizeInit() {
 // Copy bootstrap CSS from node_modules to dist/css
 function bsCssInit() {
   return gulp.src(paths.bsCss.src)
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(cleanCSS())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(autoprefixer({browsers: ['last 2 versions', 'ie >= 9', '> 1%']}))
     .pipe(gulp.dest(paths.bsCss.dest))
     .pipe(notify({message: '<%= file.relative %> distributed!', title : 'bsCssInit', sound: false}));
 }

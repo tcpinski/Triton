@@ -1,5 +1,7 @@
 <header class="bg-light-grey">
-  <div class="container-fluid user-controls bg-tertiary">
+
+  <!-- User Controls -->
+  <!--div class="container-fluid user-controls bg-tertiary">
     <div class="container">
       <div class="row justify-content-end">
         <ul>
@@ -10,7 +12,9 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div-->
+  <!-- /User Controls -->
+
   <div class="container-fluid">
     <div class="container">
       <div class="row nav-main">
@@ -21,4 +25,5 @@
       </div>
     </div>
   </div>
+
 </header>
