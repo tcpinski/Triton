@@ -1,4 +1,5 @@
-jQuery( document ).ready(function($) { 
+jQuery( document ).ready(function($) {
+
   /* SlimMenu Prep */
   $('#navigation').slimmenu({
     resizeWidth: '800',
@@ -10,4 +11,5 @@ jQuery( document ).ready(function($) {
     expandIcon: '',
     collapseIcon: ''
   });
+
 });
