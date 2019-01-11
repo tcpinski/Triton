@@ -8,14 +8,21 @@
 
 // Base Styles
 //–––––––––––––––––––––––––––––––––––––––––––––––––
+html,
+body {
+  height: 100%;
+}
 
 body {
+  position: relative;
+  height: 100%;
   font-size: 16px;
   font-weight: 200;
   line-height: 1.5;
   font-family: $open-sans;
   color: $font-color;
   background-color: #fff;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -86,7 +93,9 @@ sub {
   top: .4em;
 }
 
-
+main div.container {
+  margin-bottom: 0 !important;
+}
 
 // Links
 //–––––––––––––––––––––––––––––––––––––––––––––––––
@@ -101,16 +110,6 @@ a {
     text-decoration:none;
   }
 }
-header a, footer a {
-	color: $primary-color;
-	font-weight:600;
-	
-	&:hover {
-    	color: lighten($primary-color, 20%);
-  	}
-}
-
-
 
 // hr and pre
 //–––––––––––––––––––––––––––––––––––––––––––––––––

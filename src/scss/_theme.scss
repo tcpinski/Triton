@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$font-primary: 'Roboto', sans-serif;
+
+$color-blue-primary: #67a7ff;
+$color-blue-secondary: #3880ff;
+
+// Resets
+body {
+  font-family: $font-primary;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 20px;
+}
+
+h1 { font-size: 44px; }
+h2 { font-size: 32px; }
+
+// Topbar
+.topbar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  width: 100%;
+  box-shadow: 0 6px 12px rgba(black, 0.1);
+  
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3880ff+0,67a7ff+100 */
+  background: #3880ff; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #3880ff 0%, #67a7ff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #3880ff 0%,#67a7ff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #3880ff 0%,#67a7ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3880ff', endColorstr='#67a7ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  p {
+    margin: 0;
+    color: white;
+    font-family: $font-primary;
+    font-size: 13px;
+  }
+}
+
+// Header
+.header-main {
+  box-shadow: initial;
+  padding: 20px 0;
+
+  &.fixed {
+    padding: 6px 0;
+    background: white;
+  }
+  
+  .header-main__logo {
+    width: 160px;
+  }
+
+  // Menu
+  .menu {
+
+    &.menu--desktop {
+      ul {
+
+        // List Style base
+        li {
+
+          &.active-parent > a,
+          &.active > a {
+            color: $color-blue-primary;
+          }
+
+          a {
+            font-size: 14px;
+            font-family: $font-primary;
+            text-transform: initial;
+            transition: all 0.15s ease-in-out;
+
+            &:hover {
+              color: $color-blue-primary;
+            }
+          }
+        }
+
+        // List Toggle style base 
+        li[data-depth="0"] {
+          
+          // Submenu Depth 1
+          ul {
+            bottom: 0;
+            border: none;
+            border-radius: 18px;
+          }
+        }
+      }
+    }
+
+    &.menu--mobile {
+
+    }
+
+  }
+}
+
+// Hero
+.hero {
+  padding: 80px 0;
+
+  h2 { font-size: 44px; }
+}
+
+// Button
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(black, 0.05);
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-family: $font-primary;
+  font-size: 13px;
+  font-weight: bold;
+
+  &:hover {
+    box-shadow: 0 12px 18px rgba(black, 0.1);
+  }
+
+  &.button--primary {
+    background: #67A7FF;
+    color: white !important;
+  };
+
+  &.button--secondary {
+    background: #FFDF5D;
+    color: #4D4D4D !important;
+  };
+
+  &.button--large {
+    padding: 10px 20px;
+  }
+
+  &.button--chevron {
+    padding-right: 20px;
+
+    &.button--large {
+      padding-right: 30px;
+
+      &::after { right: 10px; }
+    }
+
+    &::after {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      content: '\f054';
+      font-family: 'Font Awesome 5 Pro';
+      font-weight: 900;
+      top: 0;
+      right: 5px;
+      height: 100%;
+    }
+  }
+
+
+  i { margin-left: 5px; }
+
+}

@@ -1,0 +1,32 @@
+<nav id="menu-mobile" class="menu menu--mobile d-md-none" data-sticky="true" data-dropdown-icon="fas fa-angle-down">
+  <ul>
+    [*>NODE-TOP]
+  </ul>
+</nav>
+
+  [>NODE-TOP]
+    <li class="[?SELECTED]active [/?] [?NODE]parent[/?]" data-depth="[=DEPTH]">
+      
+      <a href="[=URL]">[=TEXT]</a>
+ 
+      
+      [?NODE]
+        <ul data-depth="[=DEPTH]">
+          [*>NODE]
+        </ul>
+      [/?]
+    </li>
+  [/>]
+  
+  [>NODE]
+    <li class="[?SELECTED] active[/?]">
+      
+      <a href="#">[=TEXT]</a>
+      
+      [?NODE]
+        <ul>
+          [*>NODE]
+        </ul>
+      [/?]
+    </li>
+  [/>]

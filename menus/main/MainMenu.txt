@@ -1,18 +1,20 @@
-<ul class="slimmenu normal" id="navigation">
-  [*>NODE-TOP]
-</ul>
+<div id="menu-desktop" class="menu menu--desktop" data-sticky="true" data-dropdown-icon="fas fa-angle-down">
+  <ul>
+    [*>NODE-TOP]
+  </ul>
+</div>
 
   [>NODE-TOP]
-    <li[?SELECTED] class="active"[/?]>
+    <li class="[?SELECTED]active [/?] [?NODE]parent[/?]" data-depth="[=DEPTH]">
       
       [?ENABLED]
-        <a href="[=URL]" class="btn btn-primary[?NODE] split[/?]">[=TEXT]</a>
+        <a href="[=URL]" class=" [?NODE]dropdown-toggle[/?]">[=TEXT]</a>
       [?ELSE]    
-        <a href="#" class="btn btn-primary[?NODE] single[/?]">[=TEXT]</a>
+        <a href="#" class="btn btn-primary">[=TEXT]</a>
       [/?]
       
       [?NODE]
-        <ul>
+        <ul class="dropdown">
           [*>NODE]
         </ul>
       [/?]
@@ -20,7 +22,7 @@
   [/>]
   
   [>NODE]
-    <li class="[?SELECTED] active[/?]">
+    <li class="[?SELECTED] active[/?]" data-depth="[=DEPTH]">
       
       [?ENABLED]  
         <a href="[=URL]" [?NODE]class="split"[/?]>[=TEXT]</a>

@@ -1,29 +1,32 @@
-<header class="bg-light-grey">
-
-  <!-- User Controls -->
-  <!--div class="container-fluid user-controls bg-tertiary">
-    <div class="container">
-      <div class="row justify-content-end">
-        <ul>
-          <li><dnn:Login runat="server" id="dnnLogin" /></li>
-          <li><dnn:User runat="server" id="dnnUser" /></li>
-          <li><dnn:Search runat="server" id="dnnSearch" ShowSite="false" ShowWeb="false" Submit="<i class='fa fa-search'></i>" /></li>
-          <li style="display:none;"><dnn:Language runat="server" id="dnnLanguage" ShowMenu="false" ShowLinks="false" /></li>
-        </ul>
-      </div>
-    </div>
-  </div-->
-  <!-- /User Controls -->
-
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row nav-main">
-        <dnn:LOGO id="dnnLOGO" runat="server" />
-        <nav id="nav-items">
-          <dnn:MENU id="menu" MenuStyle="menus/main" runat="server" NodeSelector="*"></dnn:MENU>
-        </nav>
-      </div>
-    </div>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div id="TopBarPane" class="col-md-12 p-0" runat="server"></div>
   </div>
+</div>
+
+<header class="header-main">
+
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+
+        <h1 class="header-main__logo">
+          <dnn:LOGO id="dnnLOGO" runat="server" />
+        </h1>
+
+        <nav id="nav-items" class="d-none d-md-block">
+          <dnn:MENUDESKTOP id="menu" MenuStyle="menus/main" runat="server" NodeSelector="*"></dnn:MENUDESKTOP>
+        </nav>
+
+      </div>
+    </div>
 
 </header>
+
+<div id="mobile-toggle" class="d-md-none"><i class="fas fa-bars"></i></div>
+<dnn:MENUMOBILE id="menuMobile" MenuStyle="menus/mobile" runat="server" NodeSelector="*"></dnn:MENUMOBILE>
+
+<div class="container-fluid">
+  <div class="row">
+    <div id="HeaderPane" class="col-12 p-0" runat="server"></div>
+  </div>
+</div>

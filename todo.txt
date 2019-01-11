@@ -1,0 +1,15 @@
+// Directions
+Do not modify any files in the following directories:
+
+/src
+/menus
+
+How to add custom css?
+- All custom styles should be added to the bottom of dist/css/style.min.css
+
+How to add custom scripts?
+- All custom JavaScript should be added to dist/js/custom.min.js
+
+// TODO
+- Create stylesheet for base theme / Remove reference to stylesheet when shipping theme.
+- Figure out how to combine css files into 1 file.

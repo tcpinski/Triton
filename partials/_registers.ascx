@@ -16,7 +16,8 @@
 <%@ Register TagPrefix="dnn" TagName="LINKTOMOBILESITE" Src="~/Admin/Skins/LinkToMobileSite.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="LOGIN" Src="~/Admin/Skins/Login.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="LOGO" Src="~/Admin/Skins/Logo.ascx" %>
-<%@ Register TagPrefix="dnn" TagName="MENU" src="~/DesktopModules/DDRMenu/Menu.ascx" %>
+<%@ Register TagPrefix="dnn" TagName="MENUDESKTOP" src="~/DesktopModules/DDRMenu/Menu.ascx" %>
+<%@ Register TagPrefix="dnn" TagName="MENUMOBILE" src="~/DesktopModules/DDRMenu/Menu.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="META" Src="~/Admin/Skins/Meta.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="MODULEMESSAGE" Src="~/Admin/Skins/ModuleMessage.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="NAV" Src="~/Admin/Skins/Nav.ascx" %>

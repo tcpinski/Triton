@@ -10,6 +10,8 @@
     <div class="container">
       <ul>
         <li><dnn:COPYRIGHT id="dnnCopyright" runat="server" /></li>
+        <li><dnn:TERMS id="dnnTerms" runat="server" /></li>
+        <li><dnn:PRIVACY id="dnnPrivacy" runat="server" /></li>
       </ul>
     </div>
   </div>
