@@ -1,9 +1,3 @@
-// Directions
-Do not modify any files in the following directories:
-
-/src
-/menus
-
 How to add custom css?
 - All custom styles should be added to the bottom of dist/css/style.min.css
 
@@ -12,4 +6,42 @@ How to add custom scripts?
 
 // TODO
 - Create stylesheet for base theme / Remove reference to stylesheet when shipping theme.
-- Figure out how to combine css files into 1 file.
+- Find scripts for UI components
+- Write documentation
+- Add babel & rewrite JS as ES2016
+
+
+
+
+
+
+
+// Documentation
+
+// Libraries
+
+Accordion - https://github.com/vctrfrnndz/jquery-accordion
+-- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/jquery.accordion.css
+-- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/jquery-accordion/jquery.accordion.js"></script>
+
+Background Video - https://github.com/lemehovskiy/videoBackground
+-- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/videoBackground/videoBackground.css
+-- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/videoBackground/videoBackground.min.js"></script>
+
+Counter - https://github.com/bfintal/Counter-Up
+-- CSS: N/A
+-- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/jquery-counter-up/jquery.counterup.min.js"></script>
+
+Slick - https://github.com/kenwheeler/slick/
+-- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/slick/slick.css
+-- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/slick/slick.min.js"></script>
+
+
+// -- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/
+// -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/"></script>
+
+// Header
+data-sticky: (true/false)
+
+// Menu
+data-dropdown-icon: (Font Awesome CSS class)

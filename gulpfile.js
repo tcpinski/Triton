@@ -9,7 +9,8 @@ var gulp          = require('gulp'),
     replace       = require('gulp-replace'),
     zip           = require('gulp-zip'),
     clean         = require('gulp-clean'),
-    cleanCSS      = require('gulp-clean-css');
+    cleanCSS      = require('gulp-clean-css'),
+    concat        = require('gulp-concat-css'),
     details       = require('./project-details.json'),
     project       = details.project,
     version       = details.version,
@@ -34,7 +35,7 @@ var paths = {
   faCss: {
     //src: './node_modules/font-awesome/css/font-awesome.min.css',
     src: './node_modules/@fortawesome/fontawesome-pro/css/all.min.css',
-    dest: './dist/css/'
+    dest: './dist/css/core'
   },
   slimMenu: {
     src: './src/assets/jquery.slimmenu.min.js',
@@ -42,12 +43,12 @@ var paths = {
   },
   normalize: {
     src: './node_modules/normalize.css/normalize.css',
-    dest: './dist/css/'
+    dest: './dist/css/core'
   },
   bsCss: {
     //src: './node_modules/bootstrap/dist/css/bootstrap.min.*',
     src: './node_modules/bootstrap/scss/bootstrap-grid.scss',
-    dest: './dist/css/'
+    dest: './dist/css/core'
   },
   /*
   bsJs: {
@@ -61,7 +62,7 @@ var paths = {
   },
   styles: {
     src: './src/scss/**/*.scss',
-    dest: './dist/css/'
+    dest: './dist/css'
   },
   scripts: {
     src: './src/js/*.js',
@@ -127,11 +128,13 @@ function faCssInit() {
 }
 
 // Copy jquery.slimmenu.min.js from src/assets to dist/js
+/*
 function slimMenuInit() {
   return gulp.src(paths.slimMenu.src)
     .pipe(gulp.dest(paths.slimMenu.dest))
     .pipe(notify({message: '<%= file.relative %> distributed!', title : 'slimMenuInit', sound: false}));
 }
+*/
 
 // Compile normalize.css from node_modules and copy to dist/js
 function normalizeInit() {
@@ -199,9 +202,24 @@ function styles() {
   .pipe(cleanCSS())
   .pipe(rename({suffix: '.min'}))
   .pipe(autoprefixer({browsers: ['last 2 versions', 'ie >= 9', '> 1%']}))
-  .pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
+  .pipe(gulp.dest(paths.styles.dest + '/core', { sourcemaps: '.' }))
   .pipe(notify({message: '<%= file.relative %> compiled and distributed!', title : 'styles', sound: false}));
 }
+
+function concatStyles() {
+  return gulp.src([
+    paths.styles.dest + '/core/font-awesome.min.css', 
+    paths.styles.dest + '/core/plugins/jquery-accordion/jquery.accordion.css',
+    paths.styles.dest + '/core/plugins/slick/slick.css',
+    paths.styles.dest + '/core/plugins/videoBackground/videoBackground.css',
+    paths.styles.dest + '/core/bootstrap-grid.min.css', 
+    paths.styles.dest + '/core/base-style.min.css',
+  ])
+    .pipe(concat('style.min.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest(paths.styles.dest));
+}
+
 /*------------------------------------------------------*/
 /* END STYLES TASKS ------------------------------------*/
 /*------------------------------------------------------*/
@@ -316,17 +334,21 @@ function cleanup() {
 // gulp watch
 function watch() {
   gulp.watch(paths.images.src, images);
-  gulp.watch(paths.styles.src, styles);
+  // gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.styles.src, buildStyles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.containers.src, containers);
 }
 
 // gulp init
 // var init = gulp.series(fontsInit, faFontsInit, faCssInit, slimMenuInit, normalizeInit, bsCssInit, bsJsInit);
-var init = gulp.series(fontsInit, faFontsInit, faCssInit, slimMenuInit, normalizeInit, bsCssInit);
+var init = gulp.series(fontsInit, faFontsInit, faCssInit, normalizeInit, bsCssInit);
+
+// gulp buildStyles
+var buildStyles = gulp.series(faCssInit, bsCssInit, styles, concatStyles);
 
 // gulp build
-var build = gulp.series(init, styles, scripts, images, containers, manifest);
+var build = gulp.series(init, styles, concatStyles, scripts, images, containers, manifest);
 
 // gulp package
 var package = gulp.series(build, ziptemp, zippackage, cleanup);
@@ -342,12 +364,13 @@ var package = gulp.series(build, ziptemp, zippackage, cleanup);
 exports.fontsInit = fontsInit;
 exports.faFontsInit = faFontsInit;
 exports.faCssInit = faCssInit;
-exports.slimMenuInit = slimMenuInit;
+// exports.slimMenuInit = slimMenuInit;
 exports.normalizeInit = normalizeInit;
 exports.bsCssInit = bsCssInit;
 // exports.bsJsInit = bsJsInit;
 exports.images = images;
 exports.styles = styles;
+exports.concatStyles = concatStyles;
 exports.scripts = scripts;
 exports.containers = containers;
 exports.manifest = manifest;

@@ -1,4 +1,5 @@
-<nav id="menu-mobile" class="menu menu--mobile d-md-none" data-sticky="true" data-dropdown-icon="fas fa-angle-down">
+<nav id="menu-mobile" class="menu menu--mobile d-md-none" data-dropdown-icon="fas fa-angle-down">
+  <div class="mobile-toggle mobile-toggle--mobile d-md-none"><i class="fas fa-bars"></i></div>
   <ul>
     [*>NODE-TOP]
   </ul>
@@ -19,9 +20,9 @@
   [/>]
   
   [>NODE]
-    <li class="[?SELECTED] active[/?]">
+    <li class="[?SELECTED] active[/?] data-depth="[=DEPTH]">
       
-      <a href="#">[=TEXT]</a>
+      <a href="[=URL]">[=TEXT]</a>
       
       [?NODE]
         <ul>

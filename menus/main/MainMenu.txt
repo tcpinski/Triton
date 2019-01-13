@@ -1,4 +1,4 @@
-<div id="menu-desktop" class="menu menu--desktop" data-sticky="true" data-dropdown-icon="fas fa-angle-down">
+<div id="menu-desktop" class="menu menu--desktop" data-dropdown-icon="fas fa-angle-down">
   <ul>
     [*>NODE-TOP]
   </ul>

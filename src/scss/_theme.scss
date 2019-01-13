@@ -4,11 +4,14 @@ $font-primary: 'Roboto', sans-serif;
 
 $color-blue-primary: #67a7ff;
 $color-blue-secondary: #3880ff;
+$color-yellow-primary: #FFDF5D;
 
 // Resets
 body {
   font-family: $font-primary;
 }
+
+a { text-decoration: none; }
 
 h1,h2,h3,h4,h5,h6 {
   margin-bottom: 20px;
@@ -51,10 +54,20 @@ h2 { font-size: 32px; }
   &.fixed {
     padding: 6px 0;
     background: white;
+    box-shadow: 0 6px 12px rgba(black, 0.1);
   }
   
   .header-main__logo {
     width: 160px;
+    margin-bottom: 0;
+    
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img { width: 100%; }
   }
 
   // Menu
@@ -95,46 +108,185 @@ h2 { font-size: 32px; }
         }
       }
     }
+  }
+}
 
-    &.menu--mobile {
+.menu--mobile {
 
+  ul {
+
+    // List Style base
+    li {
+      &.active-parent > a,
+      &.active > a,
+      &.active .icon {
+        color: $color-blue-primary;
+      }
+
+      a {
+        font-size: 14px;
+        font-family: $font-primary;
+        text-transform: initial;
+
+        &:hover {
+          color: $color-blue-primary !important;
+        }
+      }
     }
-
   }
 }
 
 // Hero
 .hero {
+  position: relative;
   padding: 80px 0;
 
+  &.hero--blue {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3880ff+0,67a7ff+100 */
+    background: #3880ff; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #3880ff 0%, #67a7ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #3880ff 0%,#67a7ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #3880ff 0%,#67a7ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3880ff', endColorstr='#67a7ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+
   h2 { font-size: 44px; }
+
+}
+
+
+// Card
+.card {
+  position: relative;
+  display: block;
+  height: 275px;
+  padding: 20px 60px 20px 20px;
+  background: #FFDF5D;
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(black, 0.1);
+
+  &::after {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #FFDF5D;
+    border-radius: 18px;
+    box-shadow: 6px 12px 18px rgba(black, 0.15);
+    transition: all 0.30s ease-in-out;
+  }
+
+  &:hover {
+    &::after {
+      transform: scale(1.05);
+      box-shadow: 6px 12px 18px rgba(black, 0.1), -6px 12px 18px rgba(black, 0.1);
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    margin: 15px 0;
+  }
+
+  .card__title,
+  .card__subtitle,
+  .card__action,
+  .card__icon {
+    z-index: 10;
+  }
+
+  .card__title {
+    position: relative;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #4D4D4D;
+  }
+
+  .card__subtitle {
+    position: relative;
+    color: #4D4D4D;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .card__action {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .card__icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 60px;
+  }
+
 }
 
 // Button
 .button {
   position: relative;
   display: inline-block;
-  padding: 6px 10px;
   border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(black, 0.05);
   transition: all 0.2s ease-in-out;
+  color: #4D4D4D;
   text-transform: uppercase;
   font-family: $font-primary;
   font-size: 13px;
   font-weight: bold;
 
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    transition: all 0.30s ease-in-out;
+  }
+
   &:hover {
-    box-shadow: 0 12px 18px rgba(black, 0.1);
+    color: $color-blue-secondary;
+
+    &::before {
+      transform: scale(1.025);
+    }
   }
 
   &.button--primary {
-    background: #67A7FF;
+    padding: 6px 10px;
+    background: $color-blue-secondary;
+    box-shadow: 0 6px 12px rgba(black, 0.05);
     color: white !important;
+
+    &::before {
+      background: $color-blue-secondary;
+    }
+
+    &:hover {
+      box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+    }
   };
 
   &.button--secondary {
-    background: #FFDF5D;
+    padding: 6px 10px;
+    background: $color-yellow-primary;
+    box-shadow: 0 6px 12px rgba(black, 0.05);
     color: #4D4D4D !important;
+
+    &::before {
+      background: $color-yellow-primary;
+    }
+
+    &:hover {
+      box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+    }
   };
 
   &.button--large {

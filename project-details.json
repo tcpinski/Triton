@@ -1,9 +1,9 @@
 {
-	"project": "nvQuickTheme",
-	"version": "2.0.0",
-	"author": "TK Sheppard &amp; David Poindexter",
-	"company": "nvisionative",
-	"url": "www.nvquicktheme.com",
-    "email": "support@nvisionative.com",
+	"project": "Triton",
+	"version": "1.0.0",
+	"author": "Jordan Pinski",
+	"company": "Triton Commerce",
+	"url": "www.tritoncommerce.com",
+    "email": "jpinski@tritioncommerce.com",
     "description": "A DNN Theme Dev Framework"
 }

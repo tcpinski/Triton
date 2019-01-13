@@ -14,3 +14,18 @@
     </div>
   </div>
 </footer>
+
+<script>
+  /**
+   * Page Speed
+   */
+
+  /* First CSS File */
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/Portals/_default/skins/triton/dist/css/style.min.css';
+  link.type = 'text/css';
+  var godefer = document.getElementsByTagName('link')[0];
+  godefer.parentNode.insertBefore(link, godefer);
+
+</script>

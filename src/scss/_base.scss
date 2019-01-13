@@ -102,12 +102,12 @@ main div.container {
 
 a {
   color: $link-color;
-  text-decoration:none;
-  transition:.25s ease-in-out all;
+  text-decoration: none;
+  transition: .25s ease-in-out all;
 
   &:hover {
     color: darken($link-color, 5%);
-    text-decoration:none;
+    text-decoration: none;
   }
 }
 
@@ -115,17 +115,17 @@ a {
 //–––––––––––––––––––––––––––––––––––––––––––––––––
 
 hr {
-  display:block;
-  height:1px;
-  width:25%;
-  border:0;
+  display: block;
+  height: 1px;
+  width: 25%;
+  border: 0;
   border-top: 1px solid white;
-  margin-top:1.5rem;
-  margin-bottom:1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   padding: 0;
 }
 
 pre {
-  background:$light-grey;
-  padding:10px 15px;
+  background: $light-grey;
+  padding: 10px 15px;
 }

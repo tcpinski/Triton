@@ -54,7 +54,7 @@
     right: 0;
     height: 100%;
     width: 280px;
-    padding: 60px 10px 10px 10px;
+    padding: 10px;
     background: white;
     transform: translateX(102%);
     transition: all 0.15s ease-in-out;
@@ -73,7 +73,7 @@
         position: relative;
 
         &.parent:hover {
-          ul { display: none; }
+          ul { display: block; }
         }
 
         .icon {
@@ -85,20 +85,24 @@
           align-items:center;
           cursor: pointer;
           padding: 0 10px;
+          font-size: 20px;
         }
 
         // Dropdown depth 1
         ul {
-          display: none;
+          // display: none;
+          max-height: 0;
+          overflow: hidden;
           position: relative;
+          bottom: unset;
+          left: unset;
+          width: 100%;
           transform: translateY(0);
-          margin-top: 20px;
           border: none;
           box-shadow: none;
+          transition: all 0.15s linear;
 
-          &.active {
-            display: block !important;
-          }
+          &.active {  }
         }
       }
     }
@@ -116,9 +120,8 @@
 
       a {
         color: rgb(40,40,40);
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
-        text-transform: uppercase;
       }
 
     }
@@ -167,11 +170,13 @@
   }
 }
 
-#mobile-toggle {
-  position: fixed;
-  z-index: 40;
-  top: 20px;
-  right: 32px;
-  font-size: 18px;
+.mobile-toggle {
+  text-align: right;
+  font-size: 24px;
   cursor: pointer;
+
+  &.mobile-toggle--mobile {
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
 }
