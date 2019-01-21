@@ -1,10 +1,5 @@
 jQuery( document ).ready(function($) {
 
-  
-  $('.accordion').accordion({
-    "transitionSpeed": 400
-  });
-
 
   /**
    * Plugins
@@ -25,7 +20,7 @@ jQuery( document ).ready(function($) {
     // Jquery Accordion
     if (this.jqueryAccordion.length > 0) {
       this.jqueryAccordion.accordion({
-
+        'transitionSpeed': 400
       });
     }
 
@@ -56,7 +51,7 @@ jQuery( document ).ready(function($) {
     this.$elHeader = $('header.header-main');
 
     this.state = {
-      offsetTop: 0,
+      offsetTop: this.$elHeader.offset().top,
       isSticky: this.$elHeader.data('sticky') || false
     };
 
@@ -100,11 +95,10 @@ jQuery( document ).ready(function($) {
   Header.prototype.sticky = function() {
     var $this = this;
     var scrollTop = $(document).scrollTop();
-    var headerHeight = $this.$elHeader.outerHeight();
 
-    if (scrollTop > (headerHeight + $this.state.offsetTop) ) {
+    if (scrollTop >= this.state.offsetTop) {
       $this.$elHeader.addClass('fixed');
-    } else if (scrollTop < $this.state.offsetTop) {
+    } else {
       $this.$elHeader.removeClass('fixed');
     }
 

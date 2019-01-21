@@ -208,10 +208,10 @@ function styles() {
 
 function concatStyles() {
   return gulp.src([
-    paths.styles.dest + '/core/font-awesome.min.css', 
+    paths.styles.dest + '/core/font-awesome.min.css', // Needs to be on the top of stack?
     paths.styles.dest + '/core/plugins/jquery-accordion/jquery.accordion.css',
     paths.styles.dest + '/core/plugins/slick/slick.css',
-    paths.styles.dest + '/core/plugins/videoBackground/videoBackground.css',
+    paths.styles.dest + '/core/plugins/video-background/videoBackground.css',
     paths.styles.dest + '/core/bootstrap-grid.min.css', 
     paths.styles.dest + '/core/base-style.min.css',
   ])

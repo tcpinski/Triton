@@ -9,6 +9,8 @@ How to add custom scripts?
 - Find scripts for UI components
 - Write documentation
 - Add babel & rewrite JS as ES2016
+- Style plugins
+-- Accordion
 
 
 
@@ -25,8 +27,8 @@ Accordion - https://github.com/vctrfrnndz/jquery-accordion
 -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/jquery-accordion/jquery.accordion.js"></script>
 
 Background Video - https://github.com/lemehovskiy/videoBackground
--- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/videoBackground/videoBackground.css
--- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/videoBackground/videoBackground.min.js"></script>
+-- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/video-background/videoBackground.css
+-- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/video-background/videoBackground.min.js"></script>
 
 Counter - https://github.com/bfintal/Counter-Up
 -- CSS: N/A

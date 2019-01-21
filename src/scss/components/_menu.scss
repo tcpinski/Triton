@@ -3,7 +3,6 @@
   position: relative;
   z-index: 10;
   box-shadow: 0 6px 12px rgba(black,0.05);
-  animation: slide-out-top 0.25s forwards;
   
   &.fixed {
     position: fixed;
@@ -11,18 +10,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    transform: translateY(-200%);
-    animation: slide-in-top 0.25s forwards;
-  }
-
-  @keyframes slide-in-top {
-    from { transform: translateY(-200%); }
-    to { transform: translateY(0); }
-  }
-
-  @keyframes slide-out-top {
-    from { transform: translateY(-200%); }
-    to { transform: translateY(0); }
   }
 }
 
