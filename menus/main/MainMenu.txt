@@ -8,9 +8,9 @@
     <li class="[?SELECTED]active [/?] [?NODE]parent[/?]" data-depth="[=DEPTH]">
       
       [?ENABLED]
-        <a href="[=URL]" class=" [?NODE]dropdown-toggle[/?]">[=TEXT]</a>
+        <a href="[=URL]" class=" [?NODE]dropdown-toggle[/?]" title="[=TEXT]">[=TEXT]</a>
       [?ELSE]    
-        <a href="#" class="btn btn-primary">[=TEXT]</a>
+        <a href="#" class="btn btn-primary" title="[=TEXT]">[=TEXT]</a>
       [/?]
       
       [?NODE]
@@ -25,7 +25,7 @@
     <li class="[?SELECTED] active[/?]" data-depth="[=DEPTH]">
       
       [?ENABLED]  
-        <a href="[=URL]" [?NODE]class="split"[/?]>[=TEXT]</a>
+        <a href="[=URL]" [?NODE]class="split"[/?] title="[=TEXT]">[=TEXT]</a>
       [?ELSE]
         <a href="#">[=TEXT]</a>
       [/?]

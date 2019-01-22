@@ -1,5 +1,4 @@
 jQuery( document ).ready(function($) {
-  console.log('testing!');
 
   /**
    * Plugins
@@ -105,9 +104,8 @@ jQuery( document ).ready(function($) {
     $prevElements.each(function(index, value) {
       var $element = $(value);
 
-      if ($element.hasClass('aspNetHidden')) { return; }
+      if ($element.hasClass('aspNetHidden') || $element.hasClass('personalBarContainer')) { return; }
       $prevElement = $element;
-
 
     });
 
