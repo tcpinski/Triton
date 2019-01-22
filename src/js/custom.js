@@ -51,28 +51,13 @@ jQuery( document ).ready(function($) {
     this.$elHeader = $('header.header-main');
 
     this.state = {
-      offsetTop: this.$elHeader.offset().top,
+      offsetTop: this.$elHeader.position().top,
       isSticky: this.$elHeader.data('sticky') || false
     };
 
-    this.init();
     this.bindEvents();
   }
-  /**
-   * Initializes the header
-   */
-  Header.prototype.init = function() {
-    var $this = this;
 
-    // Set the headers top offset
-    var previousSiblings = $this.$elHeader.prevAll('div');
-
-    for (var i = 0; i < previousSiblings.length; i++) {
-      $this.state.offsetTop += parseInt(previousSiblings[i].scrollHeight);
-    }
-
-  };
-  
   /**
    * Binds all necessary events to the header.
    */
@@ -123,6 +108,7 @@ jQuery( document ).ready(function($) {
       },
       mobile: {
         icon: this.$elMenuMobile.data('dropdown-icon') || false,
+        isOpen: false,
       }
     };
 
@@ -156,13 +142,27 @@ jQuery( document ).ready(function($) {
     var $this = this;
 
     // Mobile Toggle
-    $this.$elMobileToggle.on('click', function() {
+    $this.$elMobileToggle.on('click touch', function() {
       $this.$elMenuMobile.toggleClass('active');
+
+      if ($this.$elMenuMobile.hasClass('active')) {
+        // Get the transition duration. Wait that amount of time before setting the
+        // isOpen state.
+        var transitionDuration = $this.$elMenuMobile.css('transition-duration').replace(/[^0-9.]/g, '');
+        
+        setTimeout(function() {
+          $this.state.mobile.isOpen = true;
+        }, transitionDuration * 1000);
+        
+      } else {
+        $this.state.mobile.isOpen = false;
+      }
+
     });
 
     // Mobile dropdown toggle
     if ($this.$elMenuMobile_dropdownToggle.length > 0) {
-      $this.$elMenuMobile_dropdownToggle.find('.dropdown-toggle').on('click', function(event) {
+      $this.$elMenuMobile_dropdownToggle.find('.dropdown-toggle').on('click touch', function(event) {
         var dropdownToggle = $(event.target);
         var dropdownPanel = dropdownToggle.siblings('ul');
 
@@ -177,6 +177,18 @@ jQuery( document ).ready(function($) {
       });
     }
 
+    // Mobile Outside Click
+    $(document).on('click touch', function(event) {
+      var $target = $(event.target);
+
+      if ($this.state.mobile.isOpen) {
+        if (!$target.closest('.menu--mobile').length > 0) {
+          $this.$elMenuMobile.removeClass('active');
+          $this.state.mobile.isOpen = false;
+        }
+      }
+
+    });
 
   };
 
