@@ -1,0 +1,14 @@
+[data-accordion] {
+
+  [data-control] {
+    cursor: pointer;
+
+    &::after {
+      transition: all 0.25s ease;
+    }
+  }
+
+  [data-content] {
+
+  }
+}

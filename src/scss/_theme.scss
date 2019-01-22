@@ -50,7 +50,7 @@ h2 { font-size: 32px; }
 .header-main {
   box-shadow: initial;
   padding: 20px 0;
-  transition: padding 0.35s ease;
+  transition: all 0.35s ease;
 
   &.fixed {
     padding: 6px 0;

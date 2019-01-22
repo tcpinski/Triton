@@ -1,5 +1,5 @@
 jQuery( document ).ready(function($) {
-
+  console.log('testing!');
 
   /**
    * Plugins
@@ -51,7 +51,9 @@ jQuery( document ).ready(function($) {
     this.$elHeader = $('header.header-main');
 
     this.state = {
+      height: this.$elHeader.outerHeight(),
       offsetTop: this.$elHeader.position().top,
+      previousElement: this.findPreviousElement(),
       isSticky: this.$elHeader.data('sticky') || false
     };
 
@@ -83,10 +85,35 @@ jQuery( document ).ready(function($) {
 
     if (scrollTop >= this.state.offsetTop) {
       $this.$elHeader.addClass('fixed');
+      $this.state.previousElement.css('marginBottom', $this.state.height);
     } else {
       $this.$elHeader.removeClass('fixed');
+      $this.state.previousElement.css('marginBottom', '0');
     }
 
+  };
+
+  /**
+   * Finds the element immediately preceding the header.
+   */
+  Header.prototype.findPreviousElement = function() {
+    var $this = this;
+
+    var $prevElements = $this.$elHeader.prevAll('div');
+    var $prevElement = '';
+
+    $prevElements.each(function(index, value) {
+      var $element = $(value);
+
+      if ($element.hasClass('aspNetHidden')) { return; }
+      $prevElement = $element;
+
+
+    });
+
+    console.log($prevElement);
+
+    return $prevElement;
   };
 
   var header = new Header();
@@ -180,9 +207,10 @@ jQuery( document ).ready(function($) {
     // Mobile Outside Click
     $(document).on('click touch', function(event) {
       var $target = $(event.target);
+      var isMobileMenu = $target.closest('.menu--mobile').length > 0;
 
       if ($this.state.mobile.isOpen) {
-        if (!$target.closest('.menu--mobile').length > 0) {
+        if (!isMobileMenu) {
           $this.$elMenuMobile.removeClass('active');
           $this.state.mobile.isOpen = false;
         }
