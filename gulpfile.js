@@ -1,4 +1,7 @@
 var gulp          = require('gulp'),
+    babel         = require('gulp-babel'),
+    sourcemaps    = require('gulp-sourcemaps'),
+    concat        = require('gulp-concat'),
     autoprefixer  = require('gulp-autoprefixer'),
     jshint        = require('gulp-jshint'),
     sass          = require('gulp-sass'),
@@ -190,12 +193,15 @@ function concatStyles() {
 // Compile custom JS and copy to dist/js
 function scripts() {
   return gulp.src(paths.scripts.src, { sourcemaps: true })
-    .pipe(jshint())
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    // .pipe(jshint())
     .pipe(uglify())
+    .pipe(concat('custom.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(paths.scripts.dest, { sourcemaps: '.' }))
-    .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'))
+    // .pipe(jshint.reporter('default'))
+    // .pipe(jshint.reporter('fail'))
     .pipe(notify({ message : '<%= file.relative %> minified!', title : "scripts", sound: false}));
 }
 
@@ -252,7 +258,7 @@ function zipelse() {
   return gulp.src(paths.zipelse.src, {base: '.'})
     .pipe(gulp.dest(paths.zipelse.dest))
     .pipe(notify({message: '<%= file.relative %> temporarily created!', title : 'zipcontainers', sound: false}))
-    .pipe(replace('dist/', ''))
+    .pipe(replace('dist', ''))
     .pipe(zip(paths.zipelse.zipfile))
     .pipe(gulp.dest(paths.zipelse.dest))
     .pipe(notify({message: '<%= file.relative %> temporarily created!', title : 'zipcontainers', sound: false}));
