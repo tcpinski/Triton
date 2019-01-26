@@ -1,0 +1,100 @@
+/* ---------------------------------------------------------
+	
+	* Filename:			  button.scss
+	* Description: 		Sets styles for the button component.
+	* Version:				1.0.0 (2019-01-26)
+	* Author:				  Jordan Pinski
+	
+------------------------------------------------------------*/
+.button {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  color: #4D4D4D;
+  text-transform: uppercase;
+  font-family: $font-primary;
+  font-size: 13px;
+  font-weight: bold;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    transition: all 0.30s ease-in-out;
+  }
+
+  &:hover {
+    color: $color-blue-secondary;
+
+    &::before {
+      transform: scale(1.025);
+    }
+  }
+
+  &.button--primary {
+    padding: 6px 10px;
+    background: $color-blue-secondary;
+    box-shadow: 0 6px 12px rgba(black, 0.05);
+    color: white !important;
+
+    &::before {
+      background: $color-blue-secondary;
+    }
+
+    &:hover {
+      box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+    }
+  };
+
+  &.button--secondary {
+    padding: 6px 10px;
+    background: $color-yellow-primary;
+    box-shadow: 0 6px 12px rgba(black, 0.05);
+    color: #4D4D4D !important;
+
+    &::before {
+      background: $color-yellow-primary;
+    }
+
+    &:hover {
+      box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+    }
+  };
+
+  &.button--large {
+    padding: 10px 20px;
+  }
+
+  &.button--chevron {
+    padding-right: 20px;
+
+    &.button--large {
+      padding-right: 30px;
+
+      &::after { right: 10px; }
+    }
+
+    &::after {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      content: '\f054';
+      font-family: 'Font Awesome 5 Pro';
+      font-weight: 900;
+      top: 0;
+      right: 5px;
+      height: 100%;
+    }
+  }
+
+
+  i { margin-left: 5px; }
+
+}

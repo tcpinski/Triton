@@ -1,3 +1,12 @@
+/* ---------------------------------------------------------
+	
+	* Filename:			  mixin.scss
+	* Description: 		Creates mixins that are used throughout components.
+	* Version:				1.0.0 (2019-01-26)
+	* Author:				  Jordan Pinski
+	
+------------------------------------------------------------*/
+
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }

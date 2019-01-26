@@ -19,7 +19,7 @@ body {
   font-size: 16px;
   font-weight: 200;
   line-height: 1.5;
-  font-family: $open-sans;
+  font-family: $font-primary;
   color: $font-color;
   background-color: #fff;
   overflow-x: hidden;
@@ -29,7 +29,7 @@ body {
 body > form#Form { overflow-x: hidden; }
 
 h1, h2, h3, h4, h5 {
-	font-family: $open-sans;
+	font-family: $font-primary;
 }
 
 h1 {

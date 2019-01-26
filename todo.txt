@@ -20,13 +20,52 @@ How to add custom scripts?
 
 // Documentation
 
+// Installation:
+-- Install the theme manually by navigating from the root folder of your DNN installation to /Portals/_default/Skins and dropping the theme files in a folder named Triton.
+-- Login to your DNN installations admin panel & apply the theme globally.
 
-// Banners
+// Banners:
 -- There are two banner panes built into the theme. One is at the top (TopBannerPane), and the other is at the bottom (BottomBannerPane);
 -- These are useful design elements for creating call to actions. By default they are position relatively, but can be turned into fixed position elements
 -- by applying the following data attribute: data-sticky="true"
 -- Each banner needs the .banner class followed by either .banner--top or .banner--bottom depending on what banner you're using.
 -- To add a close button create a div with the class .banner__close-button and use whatever you'd like as the icon inside (Typically Font Awesome).
+
+// Header:
+-- The header is positioned relatively by default but can be fixed by applying the data-attribute: data-sticky="true".
+-- When this data-attribute is applied the header will stick to the top of the page (or under the top banner if that's set to sticky as well) when a user scrolls.
+-- This is applied on both desktop and mobile. Support can be added in the future to only apply a fixed position on mobile instead of desktop & vice versa.
+
+// Menu:
+-- The menu accepts one data-attribute (data-dropdown-icon) to change the dropdown icon on both mobile & desktop. You can pass any Font Awesome icon class as the parameter to
+-- the data-attribute.
+-- ex. data-dropdown-icon="fas fa-angle-down"
+
+// Images:
+-- All images and background-images should be lazy loaded & provided at optimal sizes to improve the user experience. To dynamically load responsive images we need to supply images at different sizes. 
+-- For sake of clarity we use small, medium, large when referring to image sizes.
+-- A small image is anything less than 768px. If an image is small we only need to supply that image.
+-- A medium image is anything greater than or equal to 768px and less than 1200px. If an image is medium we need to supply two versions of that image (small & medium).
+-- A large image is anything greater or equal to 1200px. If an image is large we need to supply three versions of that image (small, medium & large).
+-- Images can be lazy loaded by applying a .lazyload class to the <img> element.
+
+// Accordion:
+--
+
+// Background Video:
+--
+
+// Counter:
+--
+
+// Slick (Slider/Carousel):
+--
+
+
+
+
+
+
 
 // Libraries
 

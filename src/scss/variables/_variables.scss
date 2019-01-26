@@ -1,4 +1,11 @@
 @import 'colors';
 @import 'breakpoints';
-//@import 'spacing';
 @import 'type';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$font-primary: 'Roboto', sans-serif;
+
+$color-blue-primary: #67a7ff;
+$color-blue-secondary: #3880ff;
+$color-yellow-primary: #FFDF5D;
