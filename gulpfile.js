@@ -33,7 +33,6 @@ var paths = {
     dest: './dist/webfonts/'
   },
   faCss: {
-    //src: './node_modules/font-awesome/css/font-awesome.min.css',
     src: './node_modules/@fortawesome/fontawesome-pro/css/all.min.css',
     dest: './dist/css/core'
   },
@@ -46,16 +45,9 @@ var paths = {
     dest: './dist/css/core'
   },
   bsCss: {
-    //src: './node_modules/bootstrap/dist/css/bootstrap.min.*',
     src: './node_modules/bootstrap/scss/bootstrap-grid.scss',
     dest: './dist/css/core'
   },
-  /*
-  bsJs: {
-    src: './node_modules/bootstrap/dist/js/bootstrap.bundle.min.*',
-    dest: './dist/js/'
-  },
-  */
   images: {
     src: './src/images/**/*.{jpg,jpeg,png,gif}',
     dest: './dist/images/'
@@ -101,10 +93,9 @@ var paths = {
   }
 };
     
-
-/*------------------------------------------------------*/
-/* INIT TASKS ------------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  INIT TASKS
+ ************************************/
 // Copy fonts from src/fonts to dist/fonts
 function fontsInit() {
   return gulp.src(paths.fonts.src)
@@ -126,15 +117,6 @@ function faCssInit() {
     .pipe(gulp.dest(paths.faCss.dest))
     .pipe(notify({message: '<%= file.relative %> distributed!', title : 'faCssInit', sound: false}));
 }
-
-// Copy jquery.slimmenu.min.js from src/assets to dist/js
-/*
-function slimMenuInit() {
-  return gulp.src(paths.slimMenu.src)
-    .pipe(gulp.dest(paths.slimMenu.dest))
-    .pipe(notify({message: '<%= file.relative %> distributed!', title : 'slimMenuInit', sound: false}));
-}
-*/
 
 // Compile normalize.css from node_modules and copy to dist/js
 function normalizeInit() {
@@ -158,23 +140,9 @@ function bsCssInit() {
     .pipe(notify({message: '<%= file.relative %> distributed!', title : 'bsCssInit', sound: false}));
 }
 
-// Copy bootstrap JS from node_modules to dist/js
-/*
-function bsJsInit() {
-  return gulp.src(paths.bsJs.src)
-    .pipe(gulp.dest(paths.bsJs.dest))
-    .pipe(notify({message: '<%= file.relative %> distributed!', title : 'bsJsInit', sound: false}));
-}
-*/
-
-/*------------------------------------------------------*/
-/* END INIT TASKS --------------------------------------*/
-/*------------------------------------------------------*/
-
-
-/*------------------------------------------------------*/
-/* IMAGE TASKS -----------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  IMAGE TASKS
+ ************************************/
 // Optimize images and copy to dist/images
 function images() {
   return gulp.src(paths.images.src, {since: gulp.lastRun(images)})
@@ -187,14 +155,10 @@ function images() {
 		.pipe(gulp.dest(paths.images.dest))
     .pipe(notify({message: '<%= file.relative %> optimized!', title : 'images', sound: false}));
 }
-/*------------------------------------------------------*/
-/* END IMAGE TASKS -------------------------------------*/
-/*------------------------------------------------------*/
 
-
-/*------------------------------------------------------*/
-/* STYLES TASKS ----------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  STYLE TASKS
+ ************************************/
 // Compile custom SCSS to CSS and copy to dist/css
 function styles() {
   return gulp.src(paths.styles.src, { sourcemaps: true })
@@ -220,14 +184,9 @@ function concatStyles() {
     .pipe(gulp.dest(paths.styles.dest));
 }
 
-/*------------------------------------------------------*/
-/* END STYLES TASKS ------------------------------------*/
-/*------------------------------------------------------*/
-
-
-/*------------------------------------------------------*/
-/* SCRIPTS TASKS ---------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  SCRIPT TASKS
+ ************************************/
 // Compile custom JS and copy to dist/js
 function scripts() {
   return gulp.src(paths.scripts.src, { sourcemaps: true })
@@ -239,14 +198,10 @@ function scripts() {
     .pipe(jshint.reporter('fail'))
     .pipe(notify({ message : '<%= file.relative %> minified!', title : "scripts", sound: false}));
 }
-/*------------------------------------------------------*/
-/* END SCRIPTS TASKS -----------------------------------*/
-/*------------------------------------------------------*/
 
-
-/*------------------------------------------------------*/
-/* DNN TASKS -------------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  DNN TASKS
+ ************************************/
 // Copy containers to proper DNN theme containers folder
 function containers() {
   return gulp.src(paths.containers.src)
@@ -271,14 +226,11 @@ function manifest() {
     .pipe(gulp.dest(paths.manifest.dest))
     .pipe(notify({message: '<%= file.relative %> updated!', title : 'manifest', sound: false}));
 }
-/*------------------------------------------------------*/
-/* END DNN TASKS ---------------------------------------*/
-/*------------------------------------------------------*/
 
 
-/*------------------------------------------------------*/
-/* PACKAGING TASKS -------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  PACKAGING TASKS
+ ************************************/
 // ZIP contents of dist folder
 function zipdist() {
   return gulp.src(paths.zipdist.src)
@@ -323,14 +275,10 @@ function cleanup() {
     .pipe(clean())
     .pipe(notify({message: 'temp folder cleaned up!', title : 'cleanup', sound: false}));
 }
-/*------------------------------------------------------*/
-/* END PACKAGING TASKS ---------------------------------*/
-/*------------------------------------------------------*/
 
-
-/*------------------------------------------------------*/
-/* DEV TASKS -------------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  DEV TASKS
+ ************************************/
 // gulp watch
 function watch() {
   gulp.watch(paths.images.src, images);
@@ -352,14 +300,11 @@ var build = gulp.series(init, styles, concatStyles, scripts, images, containers,
 
 // gulp package
 var package = gulp.series(build, ziptemp, zippackage, cleanup);
-/*------------------------------------------------------*/
-/* END DEV TASKS ---------------------------------------*/
-/*------------------------------------------------------*/
 
 
-/*------------------------------------------------------*/
-/* EXPORT TASKS ----------------------------------------*/
-/*------------------------------------------------------*/
+/*************************************
+ *  EXPORT TASKS
+ ************************************/
 // You can use CommonJS `exports` module notation to declare tasks
 exports.fontsInit = fontsInit;
 exports.faFontsInit = faFontsInit;
