@@ -1,4 +1,4 @@
-<footer class="bg-light-grey">
+<footer class="footer-main bg-light-grey">
   <div class="container upper">
     <div class="row py-5">
       <div id="FooterPaneOne" class="col-md-4" runat="server"></div>
@@ -15,17 +15,10 @@
   </div>
 </footer>
 
-<script>
-  /**
-   * Page Speed
-   */
+<div class="container-fluid" data-banner-container>
 
-  /* First CSS File */
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = '/Portals/_default/skins/triton/dist/css/style.min.css';
-  link.type = 'text/css';
-  var godefer = document.getElementsByTagName('link')[0];
-  godefer.parentNode.insertBefore(link, godefer);
-
-</script>
+  <div class="row justify-content-center">
+    <div id="BottomBannerPane" class="col-md-12 p-0" runat="server"></div>
+  </div>
+  
+</div>

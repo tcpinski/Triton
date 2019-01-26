@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" data-banner-container>
 
   <div class="row justify-content-center">
-    <div id="TopBarPane" class="col-md-12 p-0" runat="server"></div>
+    <div id="TopBannerPane" class="col-md-12 p-0" runat="server"></div>
   </div>
   
 </div>

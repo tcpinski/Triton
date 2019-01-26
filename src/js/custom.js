@@ -43,11 +43,74 @@ jQuery( document ).ready(function($) {
   var pluginLoader = new PluginLoader();
 
 
+  /**
+   * Banner
+   */
+  function Banner() {
+    this.$elBannerTop = $('.banner.banner--top') || false;
+    this.$elBannerBottom = $('.banner.banner--bottom') || false;
+    this.$elTopCloseBtn = this.$elBannerTop.find('.banner__close-button') || false;
+    this.$elBottomCloseBtn = this.$elBannerBottom.find('.banner__close-button') || false;
+
+    this.state = {
+      topSticky: this.$elBannerTop.data('sticky') || false,
+      bottomSticky: this.$elBannerBottom.data('sticky') || false,
+      isTopOpen: this.$elBannerTop.css('display') == 'none' ? false : true,
+      isBottomOpen: this.$elBannerTop.css('display') == 'none' ? false : true,
+    };
+
+    this.init();
+    this.bindEvents();
+  }
+
+  Banner.prototype.init = function() {
+
+    // Banner Top
+    if (this.$elBannerTop.length > 0) {
+      if (this.state.topSticky) {
+        this.$elBannerTop.addClass('fixed');
+      }
+    }
+
+    // Banner Bottom
+    if (this.$elBannerBottom.length > 0) {
+      if (this.state.bottomSticky) {
+        this.$elBannerBottom.addClass('fixed');
+      }
+    }
+
+  };
+
+  Banner.prototype.bindEvents = function() {
+    var $this = this;
+
+    if ($this.$elTopCloseBtn.length) {
+      $this.$elTopCloseBtn.on('click touch', function() {
+        $this.$elBannerTop.hide();
+        $('header.header-main').css('marginTop', '0');
+        $this.state.isTopOpen = false;
+      });
+    }
+
+    if ($this.$elBottomCloseBtn) {
+      $this.$elBottomCloseBtn.on('click touch', function() {
+        $this.$elBannerBottom.hide();
+        $('footer.footer-main').css('paddingBottom', '0');
+        $this.state.isBottomOpen = false;
+      });
+    }
+
+  };
+
+
    /**
    * Header
+   * 
+   * @requires Banner
    */
   function Header() {
     this.$elHeader = $('header.header-main');
+    this.banner = new Banner();
 
     this.state = {
       height: this.$elHeader.outerHeight(),
@@ -56,8 +119,27 @@ jQuery( document ).ready(function($) {
       isSticky: this.$elHeader.data('sticky') || false
     };
 
+    this.init();
     this.bindEvents();
   }
+
+  Header.prototype.init = function() {
+    var $this = this;
+
+    // Sticky top banner
+    if ($this.banner.$elBannerTop.data('sticky')) {
+      $this.$elHeader.css('marginTop', $this.banner.$elBannerTop.outerHeight() + 'px');
+      $this.$elHeader.addClass('fixed-with-banner');
+      $this.$elHeader.closest('body').find('main').css('marginTop', $this.$elHeader.outerHeight() + $this.banner.$elBannerTop.outerHeight() + 'px');
+    }
+
+    // No top banner
+    if ($this.banner.$elBannerTop.length == 0) {
+      $this.$elHeader.addClass('fixed-without-banner');
+      $this.$elHeader.closest('body').find('main').css('marginTop', $this.$elHeader.outerHeight() + 'px');
+    }
+
+  };
 
   /**
    * Binds all necessary events to the header.
@@ -82,12 +164,26 @@ jQuery( document ).ready(function($) {
     var $this = this;
     var scrollTop = $(document).scrollTop();
 
-    if (scrollTop >= this.state.offsetTop) {
-      $this.$elHeader.addClass('fixed');
-      $this.state.previousElement.css('marginBottom', $this.state.height);
+    if ($this.banner.state.isTopOpen == false) {
+      $this.state.offsetTop = 0;
+      $this.$elHeader.addClass('fixed-without-banner');
+      $this.$elHeader.closest('body').find('main').css('marginTop', $this.state.height + 'px');
+    }
+
+    if (!$this.$elHeader.hasClass('fixed-with-banner')) {
+      if (scrollTop > $this.state.offsetTop) {
+        $this.$elHeader.addClass('fixed');
+        $this.state.previousElement.css('marginBottom', $this.state.height);
+      } else {
+        $this.$elHeader.removeClass('fixed');
+        $this.state.previousElement.css('marginBottom', '0');
+      }
     } else {
-      $this.$elHeader.removeClass('fixed');
-      $this.state.previousElement.css('marginBottom', '0');
+      if (scrollTop > $this.state.offsetTop) {
+        $this.$elHeader.addClass('fixed');
+      } else {
+        $this.$elHeader.removeClass('fixed');
+      }
     }
 
   };
@@ -109,12 +205,39 @@ jQuery( document ).ready(function($) {
 
     });
 
-    console.log($prevElement);
-
     return $prevElement;
   };
 
   var header = new Header();
+
+
+
+  /**
+   * Footer
+   * 
+   * @requires Banner
+   */
+  function Footer() {
+    this.$elFooter = $('.footer-main');
+    this.banner = new Banner();
+
+    this.init();
+  }
+
+  /**
+   * Initialize the footer
+   */
+  Footer.prototype.init = function() {
+    var $this = this;
+
+    if ($this.banner.$elBannerBottom) {
+      $this.$elFooter.css('paddingBottom', $this.banner.$elBannerBottom.outerHeight() + 'px');
+      console.log($this.$elFooter.css('paddingBottom'));
+    }
+  }
+
+  var footer = new Footer();
+  
 
   
   /**
@@ -173,7 +296,7 @@ jQuery( document ).ready(function($) {
       if ($this.$elMenuMobile.hasClass('active')) {
         // Get the transition duration. Wait that amount of time before setting the
         // isOpen state.
-        var transitionDuration = $this.$elMenuMobile.css('transition-duration').replace(/[^0-9.]/g, '');
+        var transitionDuration = getTransitionDuration($this.$elMenuMobile);
         
         setTimeout(function() {
           $this.state.mobile.isOpen = true;
@@ -243,5 +366,14 @@ jQuery( document ).ready(function($) {
   };
 
   var menu = new Menu();
+
+  // Helper functions
+  function getTransitionDuration($element) {
+    return $element.css('transitionDuration').replace(/[^0-9.]/g, '');
+  }
+
+  function setTransitionDuration($element, duration) {
+    $element.css('transition-duration', duration);
+  }
   
 });

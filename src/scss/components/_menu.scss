@@ -11,6 +11,15 @@
     left: 0;
     width: 100%;
   }
+
+  &.fixed-without-banner,
+  &.fixed-with-banner {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
 
 // Menu
@@ -36,7 +45,7 @@
   // Mobile style override
   &.menu--mobile {
     position: fixed;
-    z-index: 30;
+    z-index: 100;
     top: 0;
     right: 0;
     height: 100%;
@@ -72,7 +81,7 @@
           align-items:center;
           cursor: pointer;
           padding: 0 10px;
-          font-size: 20px;
+          @include font-size(20);
         }
 
         // Dropdown depth 1
@@ -107,7 +116,7 @@
 
       a {
         color: rgb(40,40,40);
-        font-size: 14px;
+        @include font-size(14);
         font-weight: bold;
       }
 
@@ -159,7 +168,7 @@
 
 .mobile-toggle {
   text-align: right;
-  font-size: 24px;
+  @include font-size(24);
   cursor: pointer;
 
   &.mobile-toggle--mobile {

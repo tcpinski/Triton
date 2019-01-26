@@ -20,6 +20,14 @@ How to add custom scripts?
 
 // Documentation
 
+
+// Banners
+-- There are two banner panes built into the theme. One is at the top (TopBannerPane), and the other is at the bottom (BottomBannerPane);
+-- These are useful design elements for creating call to actions. By default they are position relatively, but can be turned into fixed position elements
+-- by applying the following data attribute: data-sticky="true"
+-- Each banner needs the .banner class followed by either .banner--top or .banner--bottom depending on what banner you're using.
+-- To add a close button create a div with the class .banner__close-button and use whatever you'd like as the icon inside (Typically Font Awesome).
+
 // Libraries
 
 Accordion - https://github.com/vctrfrnndz/jquery-accordion
