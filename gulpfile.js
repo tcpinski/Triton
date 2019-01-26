@@ -10,7 +10,7 @@ var gulp          = require('gulp'),
     zip           = require('gulp-zip'),
     clean         = require('gulp-clean'),
     cleanCSS      = require('gulp-clean-css'),
-    concat        = require('gulp-concat-css'),
+    concatCSS     = require('gulp-concat-css'),
     details       = require('./project-details.json'),
     project       = details.project,
     version       = details.version,
@@ -179,7 +179,7 @@ function concatStyles() {
     paths.styles.dest + '/core/bootstrap-grid.min.css', 
     paths.styles.dest + '/core/base-style.min.css',
   ])
-    .pipe(concat('style.min.css'))
+    .pipe(concatCSS('style.min.css'))
     .pipe(cleanCSS())
     .pipe(gulp.dest(paths.styles.dest));
 }
