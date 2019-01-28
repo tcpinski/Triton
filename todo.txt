@@ -43,7 +43,7 @@ How to add custom scripts?
 
 // Images:
 -- All images and background-images should be lazy loaded & provided at optimal sizes to improve the user experience. To dynamically load responsive images we need to supply images at different sizes. 
--- For sake of clarity we use small, medium, large when referring to image sizes.
+-- For sake of clarity we'll use small, medium, large when referring to image sizes.
 -- A small image is anything less than 768px. If an image is small we only need to supply that image.
 -- A medium image is anything greater than or equal to 768px and less than 1200px. If an image is medium we need to supply two versions of that image (small & medium).
 -- A large image is anything greater or equal to 1200px. If an image is large we need to supply three versions of that image (small, medium & large).

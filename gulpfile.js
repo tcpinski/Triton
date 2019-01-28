@@ -56,11 +56,11 @@ var paths = {
     dest: './dist/images/'
   },
   styles: {
-    src: './src/scss/**/*.scss',
+    src: './src/scss/*.scss',
     dest: './dist/css'
   },
   scripts: {
-    src: './src/js/*.js',
+    src: './src/js/**/*.js',
     dest: './dist/js/'
   },
   containers: {

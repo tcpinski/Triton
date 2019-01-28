@@ -5,7 +5,7 @@
 <!--#include file="partials/_header.ascx" -->
 
 <!-- Main Content -->
-<main>
+<main class="page">
 
   <!-- Section 1 -->
   <div class="container">

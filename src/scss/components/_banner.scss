@@ -56,8 +56,20 @@
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    @include font-size(22);
     
-    i { color: white; }
+    i {
+      color: white;
+      transition: color 0.15s ease;
+    }
+
+    &:hover {
+      i { color: rgb(80, 80, 80); }
+    }
+
+    @include breakpoint('md') {
+      right: 0.5rem;
+    }
   }
 
   p {

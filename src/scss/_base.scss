@@ -1,13 +1,18 @@
+/* ---------------------------------------------------------
+	
+	* Filename:			  base.scss
+	* Description: 		Defines the base styling.
+	* Version:				1.0.0 (2019-01-28)
+	* Author:				  Jordan Pinski
+	
+------------------------------------------------------------*/
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-
-
-// Base Styles
-//–––––––––––––––––––––––––––––––––––––––––––––––––
 html,
 body {
   height: 100%;

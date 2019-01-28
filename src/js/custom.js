@@ -9,35 +9,40 @@ jQuery( document ).ready(function($) {
       this.jqueryCounterUp = $('') || false;
       this.slick = $('') || false;
       this.videoBackground = $('') || false;
+      this.lazyload = $('') || false;
       this.init();
     }
 
-  /**
-   * Initializes plugins
-   */
-  init() {
-    // Jquery Accordion
-    if (this.jqueryAccordion) {
-      this.jqueryAccordion.accordion({
-        'transitionSpeed': 400
-      });
-    }
+    /**
+     * Initializes plugins
+     */
+    init() {
+      // Jquery Accordion
+      if (this.jqueryAccordion) {
+        this.jqueryAccordion.accordion({
+          'transitionSpeed': 400
+        });
+      }
 
-    // Jquery Counter Up
-    if (this.jqueryCounterUp) {
+      // Jquery Counter Up
+      if (this.jqueryCounterUp) {
 
-    }
+      }
 
-    // Slick
-    if (this.slick) {
+      // Slick
+      if (this.slick) {
 
-    }
+      }
 
-    // Video Background
-    if (this.videoBackground) {
+      // Video Background
+      if (this.videoBackground) {
 
-    }
+      }
 
+      // Lazyload
+      if (this.lazyload) {
+        
+      }
     };
   }
 

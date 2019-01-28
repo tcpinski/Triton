@@ -1,12 +1,15 @@
 /* ---------------------------------------------------------
 	
-	* Filename:			  sections.scss
-	* Description: 		Imports section styles.
+	* Filename:			  breakpoint.scss
+	* Description: 		Defines breakpoint variables.
 	* Version:				1.0.0 (2019-01-28)
 	* Author:				  Jordan Pinski
 	
 ------------------------------------------------------------*/
 
-@import 'header';
-@import 'page';
-@import 'footer';
+$breakpoints: (
+  "sm":576px,
+  "md":768px,
+  "lg":992px,
+  "xl":1200px
+);

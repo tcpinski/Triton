@@ -1,6 +1,9 @@
+// Core Dependencies
 @import 'variables/variables';
 @import 'mixins/mixin';
 @import 'base';
+
+// Core
 @import 'components/components';
 @import 'sections/sections';
 @import 'plugins/plugins';
