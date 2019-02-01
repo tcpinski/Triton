@@ -364,6 +364,85 @@ jQuery( document ).ready(function($) {
   const menu = new Menu();
 
   /**************************
+   * Phone Numbers
+   *************************/
+  class PhoneNumber {
+    constructor() {
+      this.$elPhoneNumbers = '';
+
+      this.state = {
+        phoneNumber: '',
+        desktopDestination: '',
+        breakpoint: 768
+      }
+
+    }
+
+    init() {
+      this.$elPhoneNumbers = $("a:contains('" + this.state.phoneNumber.substring(0, 2) +"')") || false; // Search by the first three numbers
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      $(document).on('load', () => {
+        this.setHrefDestination();
+      });
+
+      $(window).resize( () => {
+        this.setHrefDestination();
+      });
+    }
+
+    /**
+     * Sets the href destination depending on the window width compared to the breakpoint.
+     */
+    setHrefDestination() {
+      const $window = $(window);
+
+      if ($window.outerWidth() > this.state.breakpoint) {
+        this.$elPhoneNumbers.attr('href', this.state.desktopDestination);
+      } else {
+        this.$elPhoneNumbers.attr('href', 'tel:' + this.state.phoneNumber);
+      }
+    }
+
+    /**
+     * Sets the desktop destination.
+     * @param {string} destination 
+     */
+    setDestination(destination) {
+      this.state.desktopDestination = destination;
+    }
+
+    /**
+     * Sets the mobile phone destination.
+     * @param {string} phoneNumber 
+     */
+    setNumber(phoneNumber) {
+      this.state.phoneNumber = phoneNumber.replace(/\D+/g, ''); // Only keep numbers
+      this.init();
+    }
+
+    /**
+     * Sets the breakpoint where the destination should switch.
+     * @param {int} breakpoint
+     */
+    setBreakpoint(breakpoint) {
+      this.state.breakpoint = breakpoint;
+    }
+
+  }
+  
+  const phoneNumber = new PhoneNumber();
+  // Set phone number using phoneNumber.setNumber();
+  // Set desktop destination using phoneNumber.setDestination();
+  // Set the breakpoint using phonenumber.setBreakpoint();
+  // phoneNumber.setNumber('(608) 406-6474');
+  // phoneNumber.setDestination('/contact-us');
+  // phoneNumber.setBreakpoint(992);
+  
+
+  /**************************
    * Helper Functions
    *************************/
   function getTransitionDuration($element) {

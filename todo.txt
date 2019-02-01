@@ -6,19 +6,16 @@ How to add custom scripts?
 
 // TODO
 - Create stylesheet for base theme / Remove reference to stylesheet when shipping theme.
-- Find scripts for UI components
 - Write documentation
-- Add babel & rewrite JS as ES2016
 - Style plugins
--- Accordion
+- Remove theme specific styles from components
 
 
 
 
-
-
-
-// Documentation
+// =========================
+// ===== Documentation =====
+// =========================
 
 // Installation:
 -- Install the theme manually by navigating from the root folder of your DNN installation to /Portals/_default/Skins and dropping the theme files in a folder named Triton.
@@ -50,7 +47,8 @@ How to add custom scripts?
 -- Images can be lazy loaded by applying a .lazyload class to the <img> element.
 
 // Accordion:
---
+-- All accordions are initialized by default as long as the following structure is used and if the correct script imports are provided:
+-- https://github.com/vctrfrnndz/jquery-accordion
 
 // Background Video:
 --
@@ -59,18 +57,25 @@ How to add custom scripts?
 --
 
 // Slick (Slider/Carousel):
---
+-- 
+
+// Phone Numbers
+-- By default phone numbers wrapped in an anchor tag will stay as they are. If you'd like to have them change their destination based screen width use the following function calls:
+-- setNumber(number) - Accepts any phone number as a string. This will set the phone number you'd like to set as the destination on mobile.
+-- setDestination(destination) - Accepts any valid URL as a string. This will set the desktop destination.
+-- setBreakpoint(breakpoint) - Accepts any integer. By default this is set at 768. This will change the breakpoint where the destination will change.
 
 
 
 
 
 
-
-// Libraries
+// =========================
+// ====== Libraries ========
+// =========================
 
 Accordion - https://github.com/vctrfrnndz/jquery-accordion
--- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/jquery.accordion.css
+-- CSS: <link href="/Portals/_default/Skins/Triton/dist/css/core/plugins/jquery.accordion.css" type="text/css" rel="stylesheet">
 -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/jquery-accordion/jquery.accordion.js"></script>
 
 Background Video - https://github.com/lemehovskiy/videoBackground
@@ -78,6 +83,7 @@ Background Video - https://github.com/lemehovskiy/videoBackground
 -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/video-background/videoBackground.min.js"></script>
 
 Counter - https://github.com/bfintal/Counter-Up
+-- REQUIRES: waypoints.js
 -- CSS: N/A
 -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/jquery-counter-up/jquery.counterup.min.js"></script>
 
@@ -88,6 +94,9 @@ Slick - https://github.com/kenwheeler/slick/
 
 // -- CSS: /Portals/_default/Skins/Triton/dist/css/core/plugins/
 // -- JS: <script src="/Portals/_default/Skins/Triton/dist/js/core/plugins/"></script>
+
+// Banner
+data-sticky: (true/false)
 
 // Header
 data-sticky: (true/false)

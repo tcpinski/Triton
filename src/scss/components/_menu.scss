@@ -62,7 +62,7 @@
     padding: 10px;
     background: white;
     transform: translateX(101%);
-    transition: all 0.25s ease-in-out;
+    transition: all 0.3s ease-in-out;
     box-shadow: -6px 0 12px rgba(black, 0.05);
 
     &.active {
@@ -107,7 +107,7 @@
           transform: translateY(0);
           border: none;
           box-shadow: none;
-          transition: all 0.15s linear;
+          transition: all 0.3s linear;
 
           &.active {  }
         }
