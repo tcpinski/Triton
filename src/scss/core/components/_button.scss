@@ -6,6 +6,18 @@
 	* Author:				  Jordan Pinski
 	
 ------------------------------------------------------------*/
+
+// Import layouts using the interface
+
+// Define interface
+.button {
+
+  .button--primary {}
+  .button--secondary {}
+  .button--tertiary {}
+}
+
+
 .button {
   position: relative;
   display: inline-block;
@@ -39,7 +51,7 @@
 
   &.button--primary {
     padding: 6px 10px;
-    background: $color-blue-secondary;
+    // background: $color-blue-secondary;
     box-shadow: 0 6px 12px rgba(black, 0.05);
     color: white !important;
 
@@ -54,16 +66,18 @@
 
   &.button--secondary {
     padding: 6px 10px;
-    background: $color-yellow-primary;
-    box-shadow: 0 6px 12px rgba(black, 0.05);
     color: #4D4D4D !important;
 
     &::before {
       background: $color-yellow-primary;
+      box-shadow: 0 6px 12px rgba(black, 0.05);
     }
 
     &:hover {
-      box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+      &::before {
+        box-shadow: 6px 12px 18px rgba(black, 0.05), -6px 12px 18px rgba(black, 0.05);
+      }
+      
     }
   };
 

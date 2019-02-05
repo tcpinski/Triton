@@ -39,10 +39,6 @@ var paths = {
     src: './node_modules/@fortawesome/fontawesome-pro/css/all.min.css',
     dest: './dist/css/core'
   },
-  slimMenu: {
-    src: './src/assets/jquery.slimmenu.min.js',
-    dest: './dist/js/'
-  },
   normalize: {
     src: './node_modules/normalize.css/normalize.css',
     dest: './dist/css/core'
@@ -99,6 +95,7 @@ var paths = {
 /*************************************
  *  INIT TASKS
  ************************************/
+
 // Copy fonts from src/fonts to dist/fonts
 function fontsInit() {
   return gulp.src(paths.fonts.src)
@@ -162,6 +159,31 @@ function images() {
 /*************************************
  *  STYLE TASKS
  ************************************/
+// Compile custom SCSS components to CSS and copy to dist/css/core/components
+function buildComponents() {
+
+  var path = {
+    components: '/core/components/layouts',
+    sections: '/core/sections/layouts'
+  };
+
+  return new Promise(function(resolve, reject) {
+    componentStyle(path.components + '/banner/banner_1.scss');
+    componentStyle(path.components + '/banner/banner_2.scss');
+    resolve();
+  });
+}
+
+function componentStyle(path) {
+  return gulp.src('./src/scss' + path)
+  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+  .pipe(cleanCSS())
+  .pipe(rename({suffix: '.min'}))
+  .pipe(autoprefixer({browsers: ['last 2 versions', 'ie >= 9', '> 1%']}))
+  .pipe(gulp.dest(paths.styles.dest + '/core/components/', { sourcemaps: '.' }))
+  .pipe(notify({message: '<%= file.relative %> compiled and distributed!', title : 'componentStyle', sound: false}));
+}
+
 // Compile custom SCSS to CSS and copy to dist/css
 function styles() {
   return gulp.src(paths.styles.src, { sourcemaps: true })
@@ -178,14 +200,15 @@ function concatStyles() {
     paths.styles.dest + '/core/font-awesome.min.css', // Needs to be on the top of stack?
     paths.styles.dest + '/core/plugins/jquery-accordion/jquery.accordion.css',
     paths.styles.dest + '/core/plugins/slick/slick.css',
-    paths.styles.dest + '/core/plugins/video-background/videoBackground.css',
+    // paths.styles.dest + '/core/plugins/video-background/videoBackground.css',
     paths.styles.dest + '/core/bootstrap-grid.min.css', 
     paths.styles.dest + '/core/base-style.min.css',
   ])
-    .pipe(concatCSS('style.min.css'))
+    .pipe(concatCSS('core.min.css'))
     .pipe(cleanCSS())
     .pipe(gulp.dest(paths.styles.dest));
 }
+
 
 /*************************************
  *  SCRIPT TASKS
@@ -288,7 +311,6 @@ function cleanup() {
 // gulp watch
 function watch() {
   gulp.watch(paths.images.src, images);
-  // gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.styles.src, buildStyles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.containers.src, containers);
@@ -296,13 +318,13 @@ function watch() {
 
 // gulp init
 // var init = gulp.series(fontsInit, faFontsInit, faCssInit, slimMenuInit, normalizeInit, bsCssInit, bsJsInit);
-var init = gulp.series(fontsInit, faFontsInit, faCssInit, normalizeInit, bsCssInit);
+var init = gulp.series(faFontsInit, faCssInit, normalizeInit, bsCssInit);
 
 // gulp buildStyles
 var buildStyles = gulp.series(faCssInit, bsCssInit, styles, concatStyles);
 
 // gulp build
-var build = gulp.series(init, styles, concatStyles, scripts, images, containers, manifest);
+var build = gulp.series(init, styles, concatStyles, buildComponents, scripts, images, containers, manifest);
 
 // gulp package
 var package = gulp.series(build, ziptemp, zippackage, cleanup);
@@ -313,13 +335,15 @@ var package = gulp.series(build, ziptemp, zippackage, cleanup);
  ************************************/
 // You can use CommonJS `exports` module notation to declare tasks
 exports.fontsInit = fontsInit;
-exports.faFontsInit = faFontsInit;
+// exports.faFontsInit = faFontsInit;
 exports.faCssInit = faCssInit;
 // exports.slimMenuInit = slimMenuInit;
 exports.normalizeInit = normalizeInit;
 exports.bsCssInit = bsCssInit;
 // exports.bsJsInit = bsJsInit;
 exports.images = images;
+exports.buildComponents = buildComponents;
+exports.componentStyle = componentStyle;
 exports.styles = styles;
 exports.concatStyles = concatStyles;
 exports.scripts = scripts;

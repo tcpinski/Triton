@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$font-primary: 'Roboto', sans-serif;
+
+// Resets
+body {
+  font-family: $font-primary;
+}
+
 // Header
 .header-main {
   box-shadow: initial;

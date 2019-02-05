@@ -1,0 +1,24 @@
+/* ---------------------------------------------------------
+	
+	* Filename:			  footer.scss
+	* Description: 		Sets styles for the footer section.
+	* Version:				1.0.0 (2019-01-28)
+	* Author:				  Jordan Pinski
+	
+------------------------------------------------------------*/
+
+@import 'layouts/footer/footer_1.scss';
+@import 'layouts/footer/footer_2.scss';
+
+// Define interface
+footer {
+  
+  .footer__section {}
+  .footer__phone {}
+  .footer__title {}
+  .footer__logo {}
+  .footer__cta {}
+  .footer__map {}
+  .footer__list {}
+
+}

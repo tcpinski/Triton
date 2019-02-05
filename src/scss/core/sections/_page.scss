@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------
+	
+	* Filename:			  page.scss
+	* Description: 		Defines the page class interface. All pages and components of a page should be scoped.
+	* Version:				1.0.1 (2019-02-01)
+	* Author:				  Jordan Pinski
+	
+------------------------------------------------------------*/
+
+.page {
+
+  .page__section {}
+  .page__title {}
+  .page__text {}
+  .page__image {}
+
+}

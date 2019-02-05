@@ -1,11 +1,33 @@
 /* ---------------------------------------------------------
 	
 	* Filename:			  banner.scss
-	* Description: 		Sets styles for the banner components
+	* Description: 		Define the banner interface & import layouts using the interface.
 	* Version:				1.0.0 (2019-01-26)
 	* Author:				  Jordan Pinski
 	
 ------------------------------------------------------------*/
+
+// Import layouts using the interface
+@import 'layouts/banner/banner_1.scss';
+@import 'layouts/banner/banner_2.scss';
+
+// Define interface
+.banner {
+
+  &.banner--top {
+    &.fixed {}
+  }
+
+  &.banner--bottom {
+    &.fixed {}
+  }
+
+  .banner__title {}
+  .banner__text {}
+  .banner__image {}
+  .banner__cta {}
+  .banner__close-button {}
+}
 
 .banner {
   position: relative;
@@ -77,5 +99,14 @@
     color: white;
     font-family: $font-primary;
     @include font-size(13);
+  }
+
+  a {
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
